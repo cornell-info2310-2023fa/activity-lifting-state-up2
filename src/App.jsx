@@ -1,12 +1,16 @@
 import './App.css';
 
+import { useState } from 'react';
+
 import AccordionPanel from './components/AccordionPanel';
 import DarkModeSwitcher from './components/DarkModeSwitcher';
 
 export default function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   return (
-    <>
-      <DarkModeSwitcher />
+    <div style={{ backgroundColor: (isDarkMode ? 'black' : 'white') }}>
+      <DarkModeSwitcher onSwitchDarkMode={setIsDarkMode} />
 
       <AccordionPanel title="Props">
         React components use props to communicate with each other. Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, and functions.
@@ -23,6 +27,6 @@ export default function App() {
       < AccordionPanel title="Lifting State Up">
         Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as lifting state up, and it’s one of the most common things you will do writing React code.
       </AccordionPanel>
-    </>
+    </div>
   );
 }

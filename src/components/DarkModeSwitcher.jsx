@@ -1,14 +1,10 @@
 import './DarkModeSwitcher.css';
 
-import { useState } from 'react';
-
-export default function DarkModeSwitcher() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
+export default function DarkModeSwitcher({ onSwitchDarkMode }) {
   return (
-    <div className="darkModeSwitcher" style={{backgroundColor: (isDarkMode ? 'black' : 'white')}}>
-      <button onClick={() => setIsDarkMode(true)}>Dark Mode</button>
-      <button onClick={() => setIsDarkMode(false)}>Light Mode</button>
+    <div className="darkModeSwitcher">
+      <button onClick={() => onSwitchDarkMode(true)}>Dark Mode</button>
+      <button onClick={() => onSwitchDarkMode(false)}>Light Mode</button>
     </div>
   );
 }
