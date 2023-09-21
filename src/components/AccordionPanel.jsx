@@ -1,16 +1,15 @@
-import { useState } from 'react';
-
 import './AccordionPanel.css';
 
-export default function AccordionPanel({ title, isDarkMode, children }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
+export default function AccordionPanel({
+  title,
+  isDarkMode,
+  isExpanded,
+  onShow,
+  children
+}) {
   return (
     <section>
-      <h3 onClick={() => setIsExpanded(!isExpanded)} style={{ color: (isDarkMode ? 'white' : 'black') }}>
-        {(isExpanded ? '⮟' : '⮞') + ' ' + title}
-      </h3>
-
+      <h3 style={{ color: (isDarkMode ? 'white' : 'black') }} onClick={onShow}>{(isExpanded ? '⮟' : '⮞') + ' ' + title}</h3>
       {isExpanded && (<p style={{ color: (isDarkMode ? 'white' : 'black') }}>{children}</p>)}
     </section>
   );
